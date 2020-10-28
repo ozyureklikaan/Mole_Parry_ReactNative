@@ -232,7 +232,7 @@ export default class App extends Component {
                 {this.state.paused && <Pause onReset={this.reset} onResume={this.resume} />}
 
                 <AdMobBanner 
-                    style={{paddingTop: 10}}
+                    style={{marginTop: -15, alignItems: "center"}}
                     bannerSize="banner"
                     adUnitID={this.bannerAdId}
                     servePersonalizedAds={false}  
