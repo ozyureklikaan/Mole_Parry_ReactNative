@@ -2,6 +2,7 @@
   "expo": {
     "name": "MoleParry",
     "slug": "MoleParry",
+    "sdkVersion": "39.0.0",
     "platforms": [
       "ios",
       "android",
@@ -9,7 +10,7 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/img/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -23,6 +24,14 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.kaanozyurekli.moleparry",
+      "permissions": [],
+      "versionCode": 1,
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-7126368244915627~1705208611"
+      }
     }
   }
 }

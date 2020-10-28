@@ -6,7 +6,8 @@ import {
     Image,
     SafeAreaView,
     Text,
-    TouchableWithoutFeedback
+    TouchableWithoutFeedback,
+    Platform
 } from 'react-native';
 import Images from './assets/Images';
 import SpriteSheet from 'rn-sprite-sheet';
@@ -15,6 +16,7 @@ import Mole from './Mole';
 import GameOver from './GameOver';
 import Clear from './Clear';
 import Pause from './Pause';
+import { AdMobBanner, AdMobInterstitial, PublisherBanner, AdMobRewarded, setTestDeviceIDAsync, } from 'expo-ads-admob';
 
 const DEFAULT_TIME = 5;
 const DEFAULT_STATE = {
@@ -34,6 +36,9 @@ export default class App extends Component {
         this.state = DEFAULT_STATE;
         this.interval = null;
         this.timeInterval = null;
+
+        this.bannerAdId = Platform.OS === 'ios' ? "" : "ca-app-pub-7126368244915627/8515171303";
+        this.interstitialAdId = Platform.OS === 'ios' ? "" : "";
     }
 
     componentDidMount = () => {
@@ -225,6 +230,13 @@ export default class App extends Component {
                 {this.state.cleared && <Clear onReset={this.reset} onNextLevel={this.nextLevel} level={this.state.level} score={this.state.score} />}
                 {this.state.gameover && <GameOver onReset={this.reset} level={this.state.level} score={this.state.score} />}
                 {this.state.paused && <Pause onReset={this.reset} onResume={this.resume} />}
+
+                <AdMobBanner 
+                    style={{paddingTop: 10}}
+                    bannerSize="banner"
+                    adUnitID={this.bannerAdId}
+                    servePersonalizedAds={false}  
+                />
             </View>
         )
     }
